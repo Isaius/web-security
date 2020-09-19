@@ -8,5 +8,6 @@ const routes = express.Router()
 routes.use(express.static(path.join(__dirname, 'public')))
 
 routes.get('/users', new UserController().index)
+routes.post('/users', new UserController().store)
 
 export default routes
