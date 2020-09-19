@@ -1,8 +1,12 @@
 import express from 'express'
-import RegistrationController from './controllers/RegistrationController'
+import path from 'path'
+
+import UserController from './controllers/UserController'
 
 const routes = express.Router()
 
-routes.get('/', new RegistrationController().index)
+routes.use(express.static(path.join(__dirname, 'public')))
+
+routes.get('/users', new UserController().index)
 
 export default routes

@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
 import db from "../database/connection"
 
-class RegistrationController {
+class UserController {
     async index(req: Request, res: Response){
-        res.send("Hello, sir! All systems running well.")
+        
     }
 
     async store(req: Request, res: Response){
@@ -11,4 +11,4 @@ class RegistrationController {
     }
 }
 
-export default RegistrationController
+export default UserController
