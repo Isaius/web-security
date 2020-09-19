@@ -1,0 +1,8 @@
+{
+  "name": "web-security",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Isaius/web-security.git",
+  "author": "Isaias <isaigrec@gmail.com>",
+  "license": "MIT"
+}
