@@ -16,13 +16,18 @@ class UserController {
         
         let user:any = []
 
+        var query = `select * from users where username='${username}' and password='${password}'`;
+        console.log(query);
+
         await db3.serialize(async function() {
-            await db3.all("select * from users where username='" + username + "' and password='" + password + "'", function(err: any, row: any){
+            await db3.exec(query)
+            await db3.get("select * from users where username='" + username + "' and password='" + password + "'", function(err: any, row: any){
                 user = row
                 console.log(user)
-                return res.json(user);
             })
-        })    
+            
+            return res.json(user);
+        })
     }
 
     async store(req: Request, res: Response){
