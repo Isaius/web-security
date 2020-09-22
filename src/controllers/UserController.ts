@@ -10,43 +10,40 @@ class UserController {
         const {
             username,
             password
-        } = req.body;
-
-        console.log("Log in: " + username + ", pass: " + password);
+        } = req.params;
         
-        let user:any = []
-
         var query = `select * from users where username='${username}' and password='${password}'`;
         console.log(query);
 
         await db3.serialize(async function() {
             await db3.exec(query)
-            await db3.get("select * from users where username='" + username + "' and password='" + password + "'", function(err: any, row: any){
-                user = row
-                console.log(user)
-            })
-            
-            return res.json(user);
+            await db3.get("select * from users where username='" + username + "' and password='" + password + "'", 
+                async function(err: any, row: any){
+                    console.log(row)
+                    return res.json(row);
+                }
+            )
         })
     }
 
     async store(req: Request, res: Response){
         console.log("Novo cadastro");
-
+        
         const {
             name,
             username,
             password
         } = req.body;
-
+        
+        
         await db('users').insert({
             name,
             username,
             password
         });
-
+        
         console.log("Cadastro feito");
-        return res.sendStatus(200);
+        return res.sendStatus(201)
     }
 
     async delete(req: Request, res: Response){
@@ -56,6 +53,11 @@ class UserController {
 
         return res.sendStatus(200);
     }
+}
+
+async function bindReturn(var1: any, var2: any): Promise<any>{
+    const result = var1 =  var2
+    return result
 }
 
 export default UserController

@@ -5,8 +5,11 @@ class CommentController {
     async index(req: Request, res: Response){
         console.log("Recuperando comentários");
 
-        const comments = await db.select().table('comments');
+        const comments = await db('comments')
+            .join('users', 'comments.user_id', '=', 'users.id')
+            .select(['comments.content', 'users.username']);
 
+            console.log(comments)
         return res.json(comments);
     }
 

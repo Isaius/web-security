@@ -7,7 +7,7 @@ const routes = express.Router()
 
 routes.use(express.static(path.join(__dirname, 'public')))
 
-routes.get('/users', new UserController().index)
+routes.get('/users/:username/:password', new UserController().index)
 routes.post('/users', new UserController().store)
 routes.delete('/users', new UserController().delete)
 

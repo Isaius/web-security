@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./registration.css">
     <title>Web Security</title>
 </head>
 <body>
-    <h2>Hello, sir! This page is under construction...</h2>
+    <form action="./feed.html" >
+        <div id="register">
+
+            <label for="name">Name</label>
+            <input type="text" id ="name" name="name"/>
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"/>
+            
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password"/>
+    
+            <button onclick=register()>Registrar</button>
+
+            <h5>Já é registrado? <a href="./login.html">Faça login</a></h5>
+        </div>
+        </form>
+
+        <script type="text/javascript">
+            async function register(e) {
+                const name = document.getElementById('name').value
+                const username = document.getElementById('username').value
+                const password = document.getElementById('password').value
+                const url = `http://localhost:3333/users/`
+    
+                console.log(name, username, password)
+                axios.post(url, {
+                    name,
+                    username,
+                    password
+                }).then(data => {
+                    window.location.href = "http://localhost:3333/feed.html"
+                })
+            }
+        </script>
 </body>
 </html>
