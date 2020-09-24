@@ -31,12 +31,10 @@
         const params = location.search.substring(1).split("&")
 
         const username = params[0].split("=")[1]
-        const password = params[1].split("=")[1]
+        document.getElementById('username').value = username
 
         async function fetch() {        
-            document.getElementById('username').value = username
             getComments()
-            timeTest()
         }
 
         async function getComments(){
@@ -53,11 +51,7 @@
             div.classList.add('comment')
 
             const span = document.createElement('div')
-            span.innerHTML = 
-                "" + comment.username
-                   + "<p> " +
-                        comment.content
-                    + "</p>"
+            span.innerHTML = eval(comment.content) 
 
             div.append(span)
             document.getElementById("comments").append(div)
