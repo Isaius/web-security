@@ -51,7 +51,7 @@
             div.classList.add('comment')
 
             const span = document.createElement('div')
-            span.innerHTML = eval(comment.content) 
+            span.innerHTML = comment.content 
 
             div.append(span)
             document.getElementById("comments").append(div)
@@ -63,7 +63,7 @@
 
             const commentsUrl = `http://localhost:3333/comments`
             axios.post(commentsUrl, {
-                user_id,
+                username,
                 content
             }).then(data => {
                 makeComment({

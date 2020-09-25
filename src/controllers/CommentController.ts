@@ -9,17 +9,21 @@ class CommentController {
             .join('users', 'comments.user_id', '=', 'users.id')
             .select(['comments.content', 'users.username']);
 
-            console.log(comments)
+        console.log(comments)
         return res.json(comments);
     }
 
     async store(req: Request, res: Response){
         const {
-            user_id,
+            username,
             content
         } = req.body;
 
-        console.log("Novo comentário de " + user_id + ": " + content);
+        console.log(`Novo comentário de ${username}: ${content}`);
+
+        const user = await db('users').select('id').where('username', '=', username);
+
+        const user_id = user[0].id;
 
         await db('comments').insert({
             content,
