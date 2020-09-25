@@ -10,7 +10,7 @@ class CommentController {
             .select(['comments.content', 'users.username']);
 
         console.log(comments)
-        return res.json(comments);
+        return res.render('feed.html', { comments });
     }
 
     async store(req: Request, res: Response){

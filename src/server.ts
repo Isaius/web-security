@@ -1,9 +1,19 @@
 import express from 'express'
 import cors from 'cors'
+import nunjucks from 'nunjucks'
+import path from 'path'
 
 import routes from './routes'
+import db from './database/connection'
 
 const app = express()
+
+app.use(express.static('/src/public'))
+
+var env = nunjucks.configure(['src/views/'], {
+    autoescape: true,
+    express: app
+})
 
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))

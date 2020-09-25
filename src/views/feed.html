@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="./feed.css">
+    <link rel="stylesheet" href="../public/feed.css">
     <title>Your Feed</title>
 </head>
 <body onload=fetch()>
@@ -15,7 +15,10 @@
         </header>
 
         <div id="comments">
-
+            {% for comment in comments %}
+                <p> {{ comment.username }} </p>
+                {{ comment.content }}
+            {% endfor %}
         </div>
 
         <div id="new">
@@ -31,19 +34,6 @@
 
         const username = params[0].split("=")[1]
         document.getElementById('username').value = username
-
-        async function fetch() {        
-            getComments()
-        }
-
-        async function getComments(){
-            const commentsUrl = `http://localhost:3333/comments`
-            axios.get(commentsUrl).then(response => {
-                response.data.map(comment => {
-                    makeComment(comment)
-                })
-            })
-        }
 
         function makeComment(comment){
             const div = document.createElement('div')
