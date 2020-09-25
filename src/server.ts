@@ -8,7 +8,7 @@ import db from './database/connection'
 
 const app = express()
 
-app.use(express.static('/src/public'))
+app.use(express.static(path.resolve(__dirname, 'src', 'public')))
 
 var env = nunjucks.configure(['src/views/'], {
     autoescape: true,

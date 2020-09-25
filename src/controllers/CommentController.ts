@@ -10,7 +10,7 @@ class CommentController {
             .select(['comments.content', 'users.username']);
 
         console.log(comments)
-        return res.render('feed.html', { comments });
+        return res.render('feed.njk', { comments });
     }
 
     async store(req: Request, res: Response){
