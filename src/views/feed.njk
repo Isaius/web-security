@@ -4,7 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="./public/feed.css" />
+    
+    <style>
+        :root {
+            background-color: azure;
+            display: flex;
+            justify-content: center;
+        }
+
+        html, body {
+            height: 100%;
+            justify-content: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #comments {
+            height: 90vh;
+            max-height: 90vh;
+            width: 60vw;
+            overflow: scroll;
+            margin: 10px 5px 0;
+        }
+
+        #comments div {
+            border: 1px solid gainsboro;
+        }
+
+        #comment .comment div span {
+            color: coral;
+        }
+
+        #new {
+            display: flex;
+        }
+        #new input {
+            width: 55vw;
+            height: 5vh;
+        }
+
+        #new button {
+            margin-left: 5px;
+            width: 4vw;
+            background-color: coral;
+        }
+    </style>
     <title>Your Feed</title>
 </head>
 <body onload=fetch()>

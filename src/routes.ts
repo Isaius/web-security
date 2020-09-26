@@ -14,11 +14,11 @@ routes.delete('/users', new UserController().delete)
 routes.get('/comments', new CommentController().index)
 routes.post('/comments', new CommentController().store)
 
-routes.get('/login', function(req, res) {
+routes.get('/', function(req, res) {
     res.render('login.njk')
 })
 
-routes.get('/', function(req, res) {
+routes.get('/signup', function(req, res) {
     res.render('index.njk')
 })
 

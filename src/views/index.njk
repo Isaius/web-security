@@ -4,12 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" src="/registration.css">
+    <style>
+        :root {
+            background-color: azure;
+        }
+
+        html, body {
+            height: 100%;
+            justify-content: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #register{
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            justify-self: center;
+            align-self: center;
+        }
+
+        #register label{
+            margin-top: 15px;
+        }
+
+        #register input {
+            height: 35px;
+        }
+
+        #register button {
+            margin-top: 15px;
+            height: 30px;
+            background-color: coral;
+        }
+
+        #register h5 {
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        #register h5 a {
+            text-decoration: none;
+        }
+    </style>
     <title>Web Security</title>
 </head>
 <body>
     {{ payload }}
-    <form action="./feed" >
+    <form action="/comments" >
         <div id="register">
 
             <label for="name">Name</label>
@@ -23,7 +70,7 @@
     
             <button onclick=register()>Registrar</button>
 
-            <h5>Já é registrado? <a href="./login">Faça login</a></h5>
+            <h5>Already have an account? <a href="/">Sign in</a></h5>
         </div>
         </form>
 
@@ -40,7 +87,6 @@
                     username,
                     password
                 }).then(data => {
-                    window.location.href = "http://localhost:3333/feed"
                 })
             }
         </script>
