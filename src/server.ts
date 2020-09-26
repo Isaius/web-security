@@ -11,7 +11,7 @@ const app = express()
 app.use(express.static(path.resolve(__dirname, 'src', 'public')))
 
 var env = nunjucks.configure(['src/views/'], {
-    autoescape: true,
+    autoescape: false,
     express: app
 })
 

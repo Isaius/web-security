@@ -15,7 +15,7 @@ routes.get('/comments', new CommentController().index)
 routes.post('/comments', new CommentController().store)
 
 routes.get('/login', function(req, res) {
-    res.render('login.html')
+    res.render('login.njk')
 })
 
 routes.get('/', function(req, res) {

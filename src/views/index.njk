@@ -9,7 +9,7 @@
 </head>
 <body>
     {{ payload }}
-    <form action="./feed.html" >
+    <form action="./feed" >
         <div id="register">
 
             <label for="name">Name</label>
@@ -23,7 +23,7 @@
     
             <button onclick=register()>Registrar</button>
 
-            <h5>Já é registrado? <a href="./login.html">Faça login</a></h5>
+            <h5>Já é registrado? <a href="./login">Faça login</a></h5>
         </div>
         </form>
 
@@ -40,7 +40,7 @@
                     username,
                     password
                 }).then(data => {
-                    window.location.href = "http://localhost:3333/feed.html"
+                    window.location.href = "http://localhost:3333/feed"
                 })
             }
         </script>
