@@ -52,34 +52,48 @@
         h5 a {
             text-decoration: none;
         }
+
+        .error-message {
+            color: red;
+            text-align: center;
+        }
     </style>
     <title>Login</title>
 </head>
 <body>
-    <form action="/comments">
-        <div id="login">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
-            
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
+    <div id="login">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
 
-            <button onclick=login() >Login</button>
-            <h5>Don't have an account? <a href="/signup">Sign Up</a></h5>
-        </div>
-    </form>
+        <button onclick=login() >Login</button>
+        <h5>Don't have an account? <a href="/signup">Sign Up</a></h5>
+    </div>
 
     <script type="text/javascript">
-        function login(){
-            const username = document.getElementById("username").value
-            const password = document.getElementById("password").value
+        async function login(){
+            const username = document.getElementById("username")
+            const password = document.getElementById("password")
 
-            const url = `http://localhost:3333/users/${username}/${password}`
+            const url = `http://localhost:3333/users/${username.value}/${password.value}`
 
-            axios.get(url).then(response => {
-                console.log(response)
-                document.getElementById('username').value = username
-            })
+            try {
+                const response = await axios.get(url)
+
+                document.location.href = `/comments/?username=${username.value}`
+            } catch (error) {
+                username.value = ""
+                password.value = ""
+
+                var span = document.createElement('span')
+                span.classList.add('error-message')
+                span.innerText = "Wrong username or password. Try again!"
+
+                const div = document.getElementById('login')
+                div.append(span)
+            }
         }
     </script>
 </body>

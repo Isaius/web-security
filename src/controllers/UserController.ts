@@ -11,19 +11,17 @@ class UserController {
             username,
             password
         } = req.params;
-        
-        var query = `select * from users where username='${username}' and password='${password}'`;
-        console.log(query);
 
-        await db3.serialize(async function() {
-            await db3.exec(query)
-            await db3.get("select * from users where username='" + username + "' and password='" + password + "'", 
-                async function(err: any, row: any){
-                    console.log(row)
-                    return res.json(row);
-                }
-            )
-        })
+        const user = await db('users').where({
+            username,
+            password
+        });
+
+        if(user[0]){
+            res.json(user[0]).send()
+        } else {
+            res.sendStatus(400)
+        }
     }
 
     async store(req: Request, res: Response){
@@ -44,14 +42,6 @@ class UserController {
         
         console.log("Cadastro feito");
         return res.sendStatus(201)
-    }
-
-    async delete(req: Request, res: Response){
-        console.log('DELETE USER TABLE');
-
-        await db('users').del();
-
-        return res.sendStatus(200);
     }
 }
 

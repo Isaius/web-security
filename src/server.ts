@@ -4,14 +4,13 @@ import nunjucks from 'nunjucks'
 import path from 'path'
 
 import routes from './routes'
-import db from './database/connection'
 
 const app = express()
 
 app.use(express.static(path.resolve(__dirname, 'src', 'public')))
 
 var env = nunjucks.configure(['src/views/'], {
-    autoescape: false,
+    autoescape: true,
     express: app
 })
 

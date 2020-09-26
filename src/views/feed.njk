@@ -33,9 +33,11 @@
 
         #comments div {
             border: 1px solid gainsboro;
+            display: flex;
+            flex-direction: column;
         }
 
-        #comment .comment div span {
+        #comments .comment span {
             color: coral;
         }
 
@@ -64,8 +66,15 @@
 
         <div id="comments">
             {% for comment in comments %}
-                <p> {{ comment.username }} </p>
-                {{ comment.content }}
+                <div class="comment">
+                    <span> 
+                        <strong>
+                            {{ comment.username }} 
+                        </strong>
+                    </span>
+                    {{ comment.content }}
+                </div>
+
             {% endfor %}
         </div>
 
@@ -76,8 +85,6 @@
     </div>
 
     <script type="text/javascript">
-        let user_id = 0
-
         const params = location.search.substring(1).split("&")
 
         const username = params[0].split("=")[1]
