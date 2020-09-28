@@ -45,7 +45,7 @@ git checkout master
 
 ### SQL Injection
 
-In this application, the SQL Injection vulnerability occours at the login. The SQL query to login is just verify if the username and password received match in the database. The full string is like this, where the input is concatenated:
+In this application, the SQL Injection vulnerability occours at the login. The SQL query to login is just verify if the username and password received match in the database. The full string is like this, where the input are concatenated:
 
 ```sql
 SELECT * FROM users WHERE username=’inputUsername’ AND password=’inputPassword’
