@@ -7,7 +7,7 @@ and have the same application, but in a safe version, that is located at the bra
 
 The SQL Injection is an type of vunerabilty that comes out when the data received form the user is not handled and is directly put inside a SQL query to the database. This is a VERY VERY dangerous thing that used to happen years ago, but now is pretty hard to find one library or framerok that is not safe when using a database, even using Raw Queries.
 
-The XSS Attack, Cross-site Scripting, consists in adding some tags for the HTML page that execute some JavaScript code. This attack uses the user trust on the site to work as this vunerability runs in the client side and by that the server is not affected. To work, the HTML page must be rendered in the server before sended to the client. This way is Server Side Rendering (SSR) and for that we used the templatingg engine of Mozilla [Nunjucks](https://mozilla.github.io/nunjucks/)
+The XSS Attack, Cross-site Scripting, consists in adding some tags for the HTML page that execute some JavaScript code. This attack uses the user trust on the site to work as this vunerability runs in the client side and by that the server is not affected. To work, the HTML page must be rendered in the server before sended to the client. This way is Server Side Rendering (SSR) and for that we used the templating engine of Mozilla [Nunjucks](https://mozilla.github.io/nunjucks/)
 
 ## Setting it up
 
